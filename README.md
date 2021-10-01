@@ -1,2 +1,2 @@
-# Project-1
+# Pokedextrous
 1st GA project

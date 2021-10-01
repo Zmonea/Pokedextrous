@@ -11,3 +11,6 @@
     max-height: 100px;
     max-width: 100px;
 }
+.id{
+    display: flex;
+}

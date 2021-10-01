@@ -1,54 +1,86 @@
 $(() => {
     const calcGen = (id) => {
         if(id <= 151){
-            return "1"
-        } else if(id >= 252 && id <= 385) {
-            return "2"
-        }else if(id >= 386 && id <= 492){
-            return "3"
-        }else if(id >= 493 && id <= 648){
-
-        }else if(id >= 649 && id <= 720){
-      
-        }else if(id >= 721 && id <= 808){
-      
-        }else if(id >= 809 && id <= 894){
-      
+            return "I"
+        } else if(id >= 152 && id <= 250) {
+            return "II"
+        }else if(id >= 251 && id <= 386){
+            return "III"
+        }else if(id >= 387 && id <= 493){
+            return "IV"
+        }else if(id >= 494 && id <= 649){
+            return "V"
+        }else if(id >= 650 && id <= 721){
+            return "VI"
+        }else if(id >= 722 && id <= 809){
+            return "VII"
+        }else if(id >= 810 && id <= 894){
+            return "VII"
         }
     }
+  
+    const sortById = (id) => {
+        $("#cat li").sort(function (a, b) {
+            return parseInt(a.id) > parseInt(b.id);
+        }).each(function () {
+            var elem = $(this);
+            elem.remove();
+            $(elem).appendTo("#cat");
+        });
+          
+      }
+
     const getPokemonData = (pokemon) => {
         $.ajax({
         
             type: 'GET',
-            url: `https://pokeapi.co/api/v2/pokemon/${pokemon}?offset=0&limit=20`,
+            url: `https://pokeapi.co/api/v2/pokemon/${pokemon}`,
             }).then( (data) => {
+
+                //Id
+                let $id = $('<div>').attr('id',`${pokemon}`)
+                $id.addClass('id')
+                 $id.html(`${pokemon}`)
+                 $('#test').append($id)
+
+
                 //name
                 let $name = $('<div>').addClass('name')
                 $name.html(`${data.name}`)
-                $('#test').append($name)
+                $id.append($name)
                 
                 //sprite
                 let $sprite = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
                 $sprite.addClass('sprites')
-                $('#test').append($sprite)
+               // $('#test').append($sprite)
+                $id.append($sprite)
 
                 //types
                 let $type = $('<div>').addClass('type')
-                let $type1 = data.types[0].type.name
-                let $type2 = data.types[1].type.name
-                $type.html(`${$type1}, ${$type2}`)
-                $('#test').append($type)
+
+                for(index = 0;index < data.types.length; index++){
+                let $type = $('<div>').addClass('type')
+                let $type1 = data.types[index].type.name
+                $type.html(`${$type1}`)
+               // $('#test').append($type)
+               $id.append($type)
+
+                }
+                
+               
 
                 //generation
                 let $generation = $('<div>').addClass('generation')
-                $generation.html(`${data.name}`)
-                $('#test').append($generation)
+                console.log(calcGen(data.id))
+                $generation.html(`${calcGen(data.id)}`)
+                //$('#test').append($generation)
+                $id.append($generation)
 
                     //console.log(data.sprites.other['official-artwork'].front_default)
 
             })
     }
-for (let i = 1; i <= 6; i++) {
+for (let i = 150; i <= 165; i++) {
     getPokemonData(i)
 }
 

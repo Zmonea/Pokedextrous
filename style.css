@@ -1,0 +1,13 @@
+*{
+    margin: 0 auto;
+}
+#test{
+    height: 250px;
+    width: auto;
+    background-color: antiquewhite;
+
+}
+.sprites {
+    max-height: 100px;
+    max-width: 100px;
+}

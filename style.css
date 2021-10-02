@@ -14,3 +14,33 @@
 .id{
     display: flex;
 }
+
+.type{
+    display: flex;
+}
+/* Types */
+.fire{
+    background-color: red;
+}
+.water{
+    background-color: rgba(0, 225, 255, 0.74);
+}
+.ground{
+    background-color: rgb(107, 62, 31);
+}
+.flying{
+    background-color: rgba(0, 225, 255, 0.904);
+    padding: 5px;
+}
+.electric{
+    background-color: rgb(255, 251, 0);
+}
+.plant{
+    background-color: rgb(14, 87, 30);
+}
+.bug{
+    background-color: rgb(34, 199, 70);
+}
+.psychic{
+    background-color: rgb(238, 75, 230);
+}

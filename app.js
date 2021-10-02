@@ -19,18 +19,31 @@ $(() => {
         }
     }
   
-    const sortById = (id) => {
-        $("#cat li").sort(function (a, b) {
-            return parseInt(a.id) > parseInt(b.id);
-        }).each(function () {
-            var elem = $(this);
-            elem.remove();
-            $(elem).appendTo("#cat");
+    const sortById = (i) => {
+        //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
+
+        let sortIdList = $('.id').toArray().sort((a, b) => {
+            return parseInt(a.id) - parseInt(b.id)
+        })
+        $.each(sortIdList, (i, div) => {
+            let newDiv = sortIdList;
+             $('.id').remove();
+            $("#test").append(newDiv)
+            
         });
+        //$("#test div").toArray().sort( (a, b) => {
+          //   return parseInt(a.id) - parseInt(b.id);
+        //}).each( () => {
+        //     let elem = $(this);
+        //     elem.remove();
+        //     $("#test").append(elem);
+        // });
           
       }
 
     const getPokemonData = (pokemon) => {
+        let dataMap = []
+
         $.ajax({
         
             type: 'GET',
@@ -56,14 +69,15 @@ $(() => {
                 $id.append($sprite)
 
                 //types
-                let $type = $('<div>').addClass('type')
+                let $typeBox = $('<div>').addClass('type')
+                $id.append($typeBox)
 
                 for(index = 0;index < data.types.length; index++){
-                let $type = $('<div>').addClass('type')
-                let $type1 = data.types[index].type.name
-                $type.html(`${$type1}`)
+                    let $type = $('<div>').addClass(`${data.types[index].type.name}`)
+                    let $type1 = data.types[index].type.name
+                    $type.html(`${$type1}`)
                // $('#test').append($type)
-               $id.append($type)
+                $typeBox.append($type)
 
                 }
                 
@@ -77,11 +91,13 @@ $(() => {
                 $id.append($generation)
 
                     //console.log(data.sprites.other['official-artwork'].front_default)
+                    sortById(pokemon)
 
             })
     }
 for (let i = 150; i <= 165; i++) {
     getPokemonData(i)
+    
 }
 
           

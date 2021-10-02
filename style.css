@@ -1,11 +1,20 @@
 *{
     margin: 0 auto;
 }
+body{
+    background-color: antiquewhite;
+}
+header {
+    background-image: url(./PokeBanner2.jpg);
+    min-height: 205px;
+    width: 100%;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
 #test{
     height: 250px;
-    width: auto;
-    background-color: antiquewhite;
-
+    margin: 4px;
+    text-align: center;
 }
 .sprites {
     max-height: 100px;
@@ -13,34 +22,97 @@
 }
 .id{
     display: flex;
+    align-items: center;
 }
-
+.name{
+   width: 30px;
+}
 .type{
     display: flex;
+    width: 30%;
+    justify-content: center;
+    flex-direction: column;
+    align-content: flex-start;
+    
 }
+.generation{
+margin:0 5px 0 5px;
+text-align: center;
+padding: 10px;
+}
+.type div{
+    width: 100%;
+    padding: 2%;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 8px 1px rgb(200 200 200);
+}
+
 /* Types */
+.normal{
+    background-color: rgb(201, 202, 202);
+}
 .fire{
     background-color: red;
 }
 .water{
-    background-color: rgba(0, 225, 255, 0.74);
+    background-color: rgb(0, 117, 212);
 }
 .ground{
+    background-color: rgb(192, 149, 56);
+}
+.rock{
     background-color: rgb(107, 62, 31);
 }
 .flying{
     background-color: rgba(0, 225, 255, 0.904);
-    padding: 5px;
 }
 .electric{
     background-color: rgb(255, 251, 0);
 }
-.plant{
-    background-color: rgb(14, 87, 30);
+.grass{
+    background-color: rgb(16, 80, 29);
+    color: white;
 }
 .bug{
     background-color: rgb(34, 199, 70);
 }
 .psychic{
     background-color: rgb(238, 75, 230);
+    
 }
+.ghost{
+    background-color: rgba(156, 92, 153, 0.822);
+    color: white;
+    
+}
+.dark{
+    background-color: rgb(37, 23, 37);
+    color: white;
+}
+.fairy{
+    background-color: rgb(255, 145, 249);
+}
+.steel{
+    background-color: rgb(136, 136, 136);
+}
+.dragon{
+    background-color: rgba(140, 5, 144, 0.822);
+    color: white;
+}
+.fighting{
+    background-color: rgb(184, 49, 16);
+}
+.ice{
+    background-color: rgb(24, 228, 255);
+}
+.poison{
+    background-color: rgb(209, 20, 216)  ;  
+}
+
+@media(min-width:2000px){
+    header{
+    background-size: cover;
+    }
+
+}
+

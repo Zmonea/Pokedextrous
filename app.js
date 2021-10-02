@@ -56,11 +56,19 @@ $(() => {
                  $id.html(`${pokemon}`)
                  $('#test').append($id)
 
+                  
+
 
                 //name
                 let $name = $('<div>').addClass('name')
                 $name.html(`${data.name}`)
                 $id.append($name)
+
+                //generation
+                let $generation = $('<div>').addClass('generation')
+                console.log(calcGen(data.id))
+                $generation.html(`${calcGen(data.id)}`)
+                $id.append($generation)
                 
                 //sprite
                 let $sprite = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
@@ -76,26 +84,21 @@ $(() => {
                     let $type = $('<div>').addClass(`${data.types[index].type.name}`)
                     let $type1 = data.types[index].type.name
                     $type.html(`${$type1}`)
-               // $('#test').append($type)
-                $typeBox.append($type)
+                    $typeBox.append($type)
 
                 }
+                //Modal Button Creation
                 
                
 
-                //generation
-                let $generation = $('<div>').addClass('generation')
-                console.log(calcGen(data.id))
-                $generation.html(`${calcGen(data.id)}`)
-                //$('#test').append($generation)
-                $id.append($generation)
+               
 
-                    //console.log(data.sprites.other['official-artwork'].front_default)
+
                     sortById(pokemon)
 
             })
     }
-for (let i = 150; i <= 165; i++) {
+for (let i = 160; i <= 170; i++) {
     getPokemonData(i)
     
 }

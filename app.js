@@ -19,16 +19,16 @@ $(() => {
         }
     }
   
-    const sortById = (i) => {
+    const sortById = (selector, append) => {
         //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
 
-        let sortIdList = $('.id').toArray().sort((a, b) => {
+        let sortIdList = $(selector).toArray().sort((a, b) => {
             return parseInt(a.id) - parseInt(b.id)
         })
         $.each(sortIdList, (i, div) => {
             let newDiv = sortIdList;
-             $('.id').remove();
-            $("#test").append(newDiv)
+             $(selector).remove();
+            $(append).append(newDiv)
             
         });
           
@@ -89,20 +89,29 @@ $(() => {
                 //carosel
                 let $spriteCarosel = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
                 $spriteCarosel.addClass('caroselPic')
-               // $('#test').append($sprite)
-                $('.carosel').append($spriteCarosel)
+                $spriteCarosel.attr('id',`${pokemon}`)
+                $('.caroselImg').append($spriteCarosel)
 
+                sortById('.caroselPic','.caroselImg')
+                
                
 
 
-                    sortById(pokemon)
+                    sortById('.id','#test')
+                   
+
+                    
 
             })
     }
 for (let i = 160; i <= 170; i++) {
     getPokemonData(i)
     
+   
+    
 }
+
+//sortById('.caroselPic','.caroselImg')
 
           
 });

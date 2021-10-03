@@ -27,10 +27,25 @@ section {
     width: 100%;
     height: 200px;
     background-color: gainsboro;
+    align-items: center;
+    overflow: hidden;
+}
+.caroselImg{
+    position: relative;
 }
 .caroselPic{
-    max-height: 150px;
-    max-width: 150px;
+    height: 150px;
+    width: 150px;
+    flex-shrink: 0;
+    
+}
+.prevCarosel{
+    height: 150px;
+    width: 5em;
+}
+.nextCarosel{
+    height: 150px;
+    width: 5em;
 }
 .bannerText{
     font-size: 4em;

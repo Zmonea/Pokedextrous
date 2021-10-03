@@ -31,18 +31,12 @@ $(() => {
             $("#test").append(newDiv)
             
         });
-        //$("#test div").toArray().sort( (a, b) => {
-          //   return parseInt(a.id) - parseInt(b.id);
-        //}).each( () => {
-        //     let elem = $(this);
-        //     elem.remove();
-        //     $("#test").append(elem);
-        // });
           
       }
-
+      
     const getPokemonData = (pokemon) => {
-        let dataMap = []
+        let carosel = []
+
 
         $.ajax({
         
@@ -52,9 +46,11 @@ $(() => {
 
                 //Id
                 let $id = $('<div>').attr('id',`${pokemon}`)
+                let $idReal = $('<div>').addClass('idSmall')
                 $id.addClass('id')
-                 $id.html(`${pokemon}`)
-                 $('#test').append($id)
+                $idReal.html(`${pokemon}`)
+                $('#test').append($id)
+                $id.append($idReal)
 
                   
 
@@ -89,7 +85,12 @@ $(() => {
                 }
                 //Modal Button Creation
                 
-               
+
+                //carosel
+                let $spriteCarosel = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
+                $spriteCarosel.addClass('caroselPic')
+               // $('#test').append($sprite)
+                $('.carosel').append($spriteCarosel)
 
                
 

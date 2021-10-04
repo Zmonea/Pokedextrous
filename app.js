@@ -19,6 +19,8 @@ $(() => {
         }
     }
   
+    
+
 const sortById = (selector, append) => {
         //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
 
@@ -60,6 +62,7 @@ const prevCaro = ( min, max) => {
             })
     }
 }
+
 const nextCaro = ( min, max) => {
     min += 10
     max += 10
@@ -85,31 +88,7 @@ const nextCaro = ( min, max) => {
 
 }
 //Carousel Buttons
-$('.prevCarosel').on('click', () => {
-    setTimeout( () => {
-        $('.caroselImg').empty()
-        prevCaro(currentCaroIndex,maxCaroIndex)
-        $('.caroselImg').removeClass('animateLeft')
-    }, 100)
-    
-    $('.caroselImg').addClass('animateLeft')
-    
-    
 
-    
-
-})
-
-$('.nextCarosel').on('click', () => {
-    setTimeout( () => {
-        $('.caroselImg').empty()
-        nextCaro(currentCaroIndex,maxCaroIndex)
-        $('.caroselImg').removeClass('animateRight')
-    }, 100)
-    
-    $('.caroselImg').addClass('animateRight')
-
-})
     
       
     const getPokemonData = (pokemon) => {
@@ -144,6 +123,14 @@ $('.nextCarosel').on('click', () => {
                 $generation.html(`${calcGen(data.id)}`)
                 $id.append($generation)
                 
+                //More Info Button
+                let $infoButton = $('<button>').addClass('moreInfo')
+                $infoButton.html(`More Info`)
+                $id.append($infoButton)
+                
+               
+
+
                 //sprite
                 let $sprite = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
                 $sprite.addClass('sprites')
@@ -177,21 +164,80 @@ $('.nextCarosel').on('click', () => {
 
                     sortById('.id','#test')
                    
+                    $( ".moreInfo" ).each(function( index ) {
+                        $( this ).on('click', () => {
+                            let name = $('.name').toArray()
+                            let moreInfoTerm = name[index].innerText 
+                            console.log(moreInfoTerm)
+                            $.ajax({
+        
+                                type: 'GET',
+                                url: `https://pokeapi.co/api/v2/pokemon/${moreInfoTerm}`,
+                                }).then( (data) => {
 
+                                    alert(data.name)
+                                })
+                                
+
+                        });
+                      });
                     
 
             })
     }
+
 for (let i = currentCaroIndex; i <= maxCaroIndex; i++) {
+    
     getPokemonData(i)
-    
-   
-    
+     
 }
 
+$('.updateSearch').on('click', () => {
+    let newSearchIndex = $('.searchTerm').val()
+    let newSearchMax = parseInt(newSearchIndex) + 10
+    console.log(newSearchIndex)
+    console.log(newSearchMax)
+    $('#test').empty()
+    $('.caroselImg').empty()
+     for (let i = newSearchIndex; i <= newSearchMax; i++) {
+        getPokemonData(i)
+    }
+})
+
+$('.prevCarosel').on('click', () => {
+    setTimeout( () => {
+        $('.caroselImg').empty()
+        prevCaro(currentCaroIndex,maxCaroIndex)
+        $('.caroselImg').removeClass('animateLeft')
+    }, 100)
+    
+    $('.caroselImg').addClass('animateLeft')
+    
+    
+
+    
+
+})
+
+$('.nextCarosel').on('click', () => {
+    setTimeout( () => {
+        $('.caroselImg').empty()
+        nextCaro(currentCaroIndex,maxCaroIndex)
+        $('.caroselImg').removeClass('animateRight')
+    }, 100)
+    
+    $('.caroselImg').addClass('animateRight')
+
+})
+// $('.moreInfo').on('click', (event) => {
+//     $(event.currentTarget).html('clicked ')
+//     console.log('Test ')
+   
+//  })
 
 
 //sortById('.caroselPic','.caroselImg')
+
 
           
 });

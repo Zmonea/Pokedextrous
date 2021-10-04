@@ -34,6 +34,7 @@ section {
     height: 175px;
     background-color: gainsboro;
     align-items: center;
+    overflow: hidden;
     
     
 }
@@ -41,7 +42,19 @@ section {
     flex-basis: 90%;
     overflow: hidden;
     height: 150px;
-
+     
+}
+.animateRight{
+    animation-name: SlideRight;
+    animation-duration: .2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
+}
+.animateLeft{
+    animation-name: SlideLeft;
+    animation-duration: .2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease-in;
 }
 .caroselPic{
     height: 150px;
@@ -182,3 +195,21 @@ padding: 10px;
 
 }
 
+@keyframes SlideRight{
+    0% { opacity: 75%; transform: translateX(0px);}
+    25% {opacity: 50%; transform: translateX(50px);}
+    50% { opacity: 25%; transform: translateX(100px);}
+    75% {opacity: 10%; transform: translateX(150px);}
+    100% {opacity: 0%; transform: translateX(250px);}
+
+
+}
+@keyframes SlideLeft{
+    0% { opacity: 75%; transform: translateX(0px);}
+    25% {opacity: 50%; transform: translateX(-50px);}
+    50% { opacity: 25%; transform: translateX(-100px);}
+    75% {opacity: 10%; transform: translateX(-150px);}
+    100% {opacity: 0%; transform: translateX(-250px);}
+
+
+}

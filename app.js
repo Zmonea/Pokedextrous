@@ -33,6 +33,7 @@ const sortById = (selector, append) => {
         });
           
       }
+
 let currentCaroIndex = 20;
 let maxCaroIndex = currentCaroIndex + 10;
 
@@ -83,17 +84,31 @@ const nextCaro = ( min, max) => {
     console.log(max)
 
 }
-
+//Carousel Buttons
 $('.prevCarosel').on('click', () => {
-    $('.caroselImg').empty()
+    setTimeout( () => {
+        $('.caroselImg').empty()
+        prevCaro(currentCaroIndex,maxCaroIndex)
+        $('.caroselImg').removeClass('animateLeft')
+    }, 100)
+    
+    $('.caroselImg').addClass('animateLeft')
+    
+    
 
-    prevCaro(currentCaroIndex,maxCaroIndex)
+    
+
 })
 
 $('.nextCarosel').on('click', () => {
-    $('.caroselImg').empty()
+    setTimeout( () => {
+        $('.caroselImg').empty()
+        nextCaro(currentCaroIndex,maxCaroIndex)
+        $('.caroselImg').removeClass('animateRight')
+    }, 100)
+    
+    $('.caroselImg').addClass('animateRight')
 
-    nextCaro(currentCaroIndex,maxCaroIndex)
 })
     
       
@@ -167,7 +182,7 @@ $('.nextCarosel').on('click', () => {
 
             })
     }
-for (let i = 30; i <= 50; i++) {
+for (let i = currentCaroIndex; i <= maxCaroIndex; i++) {
     getPokemonData(i)
     
    

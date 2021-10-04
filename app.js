@@ -19,12 +19,12 @@ $(() => {
         }
     }
   
-    const sortById = (selector, append) => {
+const sortById = (selector, append) => {
         //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
 
-        let sortIdList = $(selector).toArray().sort((a, b) => {
+    let sortIdList = $(selector).toArray().sort((a, b) => {
             return parseInt(a.id) - parseInt(b.id)
-        })
+    })
         $.each(sortIdList, (i, div) => {
             let newDiv = sortIdList;
              $(selector).remove();
@@ -33,6 +33,69 @@ $(() => {
         });
           
       }
+let currentCaroIndex = 20;
+let maxCaroIndex = currentCaroIndex + 10;
+
+const prevCaro = ( min, max) => {
+    min -= 10
+    max -= 10
+    currentCaroIndex = min
+    maxCaroIndex = max
+
+    for(let i = min; i < max; i++){
+    
+
+        $.ajax({
+        
+            type: 'GET',
+            url: `https://pokeapi.co/api/v2/pokemon/${i}?offset=${min}&limit=${max}`,
+            }).then( (data) => {
+                let $spriteCarosel = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
+                $spriteCarosel.addClass('caroselPic')
+                $spriteCarosel.attr('id',`${i}`)
+                $('.caroselImg').append($spriteCarosel)
+
+                sortById('.caroselPic','.caroselImg')
+            })
+    }
+}
+const nextCaro = ( min, max) => {
+    min += 10
+    max += 10
+    currentCaroIndex = min
+    maxCaroIndex = max
+    for(let i = min; i < max; i++){
+    
+
+        $.ajax({
+        
+            type: 'GET',
+            url: `https://pokeapi.co/api/v2/pokemon/${i}?offset=${min}&limit=${max}`,
+            }).then( (data) => {
+                let $spriteCarosel = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
+                $spriteCarosel.addClass('caroselPic')
+                $spriteCarosel.attr('id',`${i}`)
+                $('.caroselImg').append($spriteCarosel)
+
+                sortById('.caroselPic','.caroselImg')
+            })
+    }
+    console.log(max)
+
+}
+
+$('.prevCarosel').on('click', () => {
+    $('.caroselImg').empty()
+
+    prevCaro(currentCaroIndex,maxCaroIndex)
+})
+
+$('.nextCarosel').on('click', () => {
+    $('.caroselImg').empty()
+
+    nextCaro(currentCaroIndex,maxCaroIndex)
+})
+    
       
     const getPokemonData = (pokemon) => {
         let carosel = []
@@ -104,12 +167,14 @@ $(() => {
 
             })
     }
-for (let i = 160; i <= 170; i++) {
+for (let i = 30; i <= 50; i++) {
     getPokemonData(i)
     
    
     
 }
+
+
 
 //sortById('.caroselPic','.caroselImg')
 

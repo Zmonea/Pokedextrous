@@ -180,7 +180,9 @@ const nextCaro = ( min, max) => {
                     $typeBox.append($type)
 
                 }
-                //Modal Button Creation
+                //Modal Creation
+                
+
                 
 
                 //carosel
@@ -208,6 +210,9 @@ const nextCaro = ( min, max) => {
                                 }).then( (data) => {
 
                                     alert(data.name)
+                                    let $modalImage = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
+                                    $('.modalImage').append($modalImage)
+
                                 })
                                 
 
@@ -230,6 +235,7 @@ console.log(officialArt);
 
 
 $('.updateSearch').on('click', () => {
+
     //if Pokemon name
     //Credit to DelftStack.com on how to check for numbers
     

@@ -23,6 +23,35 @@ section {
   text-align: center;
   height: 200px;
 }
+
+/* Modal CSS */
+.modalContainer{
+    background-color: rgba(0, 0, 0, 0.301);
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100%;
+	width: 100%;
+	z-index: 10;
+	overflow: auto;
+	display: none;
+
+}
+.modalInfo{
+    background-color: rgba(0, 0, 0, 0.938);
+    height:65%;
+	width: 45%;
+	border-radius: 10px;
+	margin: 150px auto;
+    z-index: 12;
+    display: flex;
+    flex-direction: column;
+}
+.modalImage img{
+    height: 90%;
+    width: 100%;
+    background-color: white;
+}
 .intro{
     display: flex;
     width: 100%;
@@ -131,6 +160,7 @@ margin:0 5px 0 5px;
 text-align: center;
 padding: 10px;
 }
+
 .type div{
     width: 100%;
     padding: 2%;

@@ -1,4 +1,8 @@
 $(() => {
+
+let currentCaroIndex = 20;
+let maxCaroIndex = currentCaroIndex + 10;
+
     const calcGen = (id) => {
         if(id <= 151){
             return "I"
@@ -19,7 +23,30 @@ $(() => {
         }
     }
   
+   let officialArt = [] 
+
+    function apiImageArr(first, last) {
     
+
+    for (let index = first; index < last; index++) {
+        // const imageList = await $.ajax(`https://pokeapi.co/api/v2/${index}`).then
+        // officialArt.push(`{imageList.sprites.other['official-artwork'].front_default`)
+
+         $.ajax({
+        
+            type: 'GET',
+            url: `https://pokeapi.co/api/v2/pokemon/${index}`,
+            }).then( (data) => {
+                
+                officialArt.push(data.sprites.other['official-artwork'].front_default)
+            })
+
+       // {data.sprites.other['official-artwork'].front_default}
+        
+    }
+    console.log(officialArt[0]);
+  
+}
 
 const sortById = (selector, append) => {
         //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
@@ -36,8 +63,6 @@ const sortById = (selector, append) => {
           
       }
 
-let currentCaroIndex = 20;
-let maxCaroIndex = currentCaroIndex + 10;
 
 const prevCaro = ( min, max) => {
     min -= 10
@@ -53,6 +78,7 @@ const prevCaro = ( min, max) => {
             type: 'GET',
             url: `https://pokeapi.co/api/v2/pokemon/${i}?offset=${min}&limit=${max}`,
             }).then( (data) => {
+                
                 let $spriteCarosel = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
                 $spriteCarosel.addClass('caroselPic')
                 $spriteCarosel.attr('id',`${i}`)
@@ -64,10 +90,13 @@ const prevCaro = ( min, max) => {
 }
 
 const nextCaro = ( min, max) => {
+    console.log(min, max)
     min += 10
     max += 10
+
     currentCaroIndex = min
     maxCaroIndex = max
+    
     for(let i = min; i < max; i++){
     
 
@@ -76,6 +105,8 @@ const nextCaro = ( min, max) => {
             type: 'GET',
             url: `https://pokeapi.co/api/v2/pokemon/${i}?offset=${min}&limit=${max}`,
             }).then( (data) => {
+
+                
                 let $spriteCarosel = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
                 $spriteCarosel.addClass('caroselPic')
                 $spriteCarosel.attr('id',`${i}`)
@@ -92,7 +123,6 @@ const nextCaro = ( min, max) => {
     
       
     const getPokemonData = (pokemon) => {
-        let carosel = []
 
 
         $.ajax({
@@ -101,11 +131,13 @@ const nextCaro = ( min, max) => {
             url: `https://pokeapi.co/api/v2/pokemon/${pokemon}`,
             }).then( (data) => {
 
+               // apiImageArr()
+
                 //Id
-                let $id = $('<div>').attr('id',`${pokemon}`)
+                let $id = $('<div>').attr('id',`${data.id}`)
                 let $idReal = $('<div>').addClass('idSmall')
                 $id.addClass('id')
-                $idReal.html(`${pokemon}`)
+                $idReal.html(`${data.id}`)
                 $('#test').append($id)
                 $id.append($idReal)
 
@@ -154,7 +186,7 @@ const nextCaro = ( min, max) => {
                 //carosel
                 let $spriteCarosel = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
                 $spriteCarosel.addClass('caroselPic')
-                $spriteCarosel.attr('id',`${pokemon}`)
+                $spriteCarosel.attr('id',`${data.id}`)
                 $('.caroselImg').append($spriteCarosel)
 
                 sortById('.caroselPic','.caroselImg')
@@ -192,16 +224,32 @@ for (let i = currentCaroIndex; i <= maxCaroIndex; i++) {
      
 }
 
+//TBD
+apiImageArr(10,100)
+console.log(officialArt);
+
+
 $('.updateSearch').on('click', () => {
-    let newSearchIndex = $('.searchTerm').val()
-    let newSearchMax = parseInt(newSearchIndex) + 10
-    console.log(newSearchIndex)
-    console.log(newSearchMax)
-    $('#test').empty()
-    $('.caroselImg').empty()
-     for (let i = newSearchIndex; i <= newSearchMax; i++) {
-        getPokemonData(i)
-    }
+    //if Pokemon name
+     let newSearchTerm = $('.searchTerm').val()
+     $('#test').empty()
+     $('.caroselImg').empty()
+     getPokemonData(newSearchTerm)
+
+    // //if number
+    // let newSearchIndex = $('.searchTerm').val()
+    // let newSearchMax = parseInt(newSearchIndex) + 10
+
+    // console.log(newSearchIndex)
+    // console.log(newSearchMax)
+
+    // $('#test').empty()
+    // $('.caroselImg').empty()
+    //  for (let i = newSearchIndex; i <= newSearchMax; i++) {
+    //     getPokemonData(i)
+    // }
+    // currentCaroIndex = parseInt(newSearchIndex)
+    // maxCaroIndex = newSearchMax
 })
 
 $('.prevCarosel').on('click', () => {

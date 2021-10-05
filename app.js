@@ -199,10 +199,14 @@ const nextCaro = ( min, max) => {
                     sortById('.id','#test')
                    
                     $( ".moreInfo" ).each(function( index ) {
+
                         $( this ).on('click', () => {
                             let name = $('.name').toArray()
                             let moreInfoTerm = name[index].innerText 
                             console.log(moreInfoTerm)
+                            $('.modalImage').empty()
+                            $('.modalText').empty()
+
                             $.ajax({
         
                                 type: 'GET',
@@ -211,30 +215,33 @@ const nextCaro = ( min, max) => {
 
                                     //Modal Creation
 
-                                    alert(data.name)
                                     let $modalImage = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
                                     $('.modalImage').append($modalImage)
-                                    let $modalName = $('<h2>').html(`${data.name}`)
+
+                                    let $modalName = $('<h2>').html(`${data.name}`.toUpperCase())
                                         $('.modalText').append($modalName)
+
+                                        let $modalID = $('<h2>').html(`${data.id}`)
+                                        $('.modalText').append($modalID)
                                 })
-
-                                     $.ajax({
-                                        type: "GET",
-                                         url: `https://pokeapi.co/api/v2/pokemon-species/${moreInfoTerm}`,
-                                
-                                     }).then( (specData) => {
-                                        
-                                        
-                                        let $modalFlavor = $('<div>').html(`${specData.flavor_text_entries[0].flavor_text}`)
-                                        $('.modalText').append($modalFlavor)
-                                       
-                                     })
-
-                                    // let $modalFlavor = $('<h4>').html(`test data`)
-                                    // $('.modalText').append($modalFlavor)
-
-
-                                
+                                    setTimeout( () => {
+                                        $.ajax({
+                                            type: "GET",
+                                             url: `https://pokeapi.co/api/v2/pokemon-species/${moreInfoTerm}`,
+                                    
+                                         }).then( (specData) => {
+                                            
+                                            
+                                            let $modalFlavor = $('<div>').html(`${specData.flavor_text_entries[0].flavor_text}`)
+                                            $('.modalText').append($modalFlavor)
+    
+                                            let $modalHabitat = $('<div>').html(`Habitat: ${specData.habitat.name}`)
+                                            $('.modalText').append($modalHabitat)
+                                           
+                                         })
+                                    }, 200)
+                            
+                            $('.modalContainer').css('display','block')
                                 
 
                         });
@@ -309,6 +316,9 @@ $('.nextCarosel').on('click', () => {
     
     $('.caroselImg').addClass('animateRight')
 
+})
+$('.modalContainer').on('click', () => {
+    $('.modalContainer').css('display', 'none')
 })
 // $('.moreInfo').on('click', (event) => {
 //     $(event.currentTarget).html('clicked ')

@@ -18,7 +18,7 @@ let maxCaroIndex = currentCaroIndex + 10;
             return "VI"
         }else if(id >= 722 && id <= 809){
             return "VII"
-        }else if(id >= 810 && id <= 894){
+        }else if(id >= 810 && id <= 898){
             return "VII"
         }
     }
@@ -67,9 +67,14 @@ const sortById = (selector, append) => {
 const prevCaro = ( min, max) => {
     min -= 10
     max -= 10
+    if(min < 0){
+        min = 889
+        max = 899
+    }
+
     currentCaroIndex = min
     maxCaroIndex = max
-
+    
     for(let i = min; i < max; i++){
     
 
@@ -94,8 +99,13 @@ const nextCaro = ( min, max) => {
     min += 10
     max += 10
 
+    if(max >= 899 || min > 889){
+        min = 0
+        max = 10
+    }
     currentCaroIndex = min
     maxCaroIndex = max
+
     
     for(let i = min; i < max; i++){
     
@@ -123,6 +133,7 @@ const nextCaro = ( min, max) => {
     
       
     const getPokemonData = (pokemon) => {
+        
 
 
         $.ajax({

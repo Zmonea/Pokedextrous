@@ -231,25 +231,31 @@ console.log(officialArt);
 
 $('.updateSearch').on('click', () => {
     //if Pokemon name
+    //Credit to DelftStack.com on how to check for numbers
+    
      let newSearchTerm = $('.searchTerm').val()
+     if(isNaN(newSearchTerm)){
      $('#test').empty()
      $('.caroselImg').empty()
-     getPokemonData(newSearchTerm)
 
-    // //if number
-    // let newSearchIndex = $('.searchTerm').val()
-    // let newSearchMax = parseInt(newSearchIndex) + 10
+     getPokemonData(newSearchTerm.toLowerCase())
+     }else{
 
-    // console.log(newSearchIndex)
-    // console.log(newSearchMax)
+    //if number
+    let newSearchIndex = $('.searchTerm').val()
+    let newSearchMax = parseInt(newSearchIndex) + 10
 
-    // $('#test').empty()
-    // $('.caroselImg').empty()
-    //  for (let i = newSearchIndex; i <= newSearchMax; i++) {
-    //     getPokemonData(i)
-    // }
-    // currentCaroIndex = parseInt(newSearchIndex)
-    // maxCaroIndex = newSearchMax
+    console.log(newSearchIndex)
+    console.log(newSearchMax)
+
+    $('#test').empty()
+    $('.caroselImg').empty()
+     for (let i = newSearchIndex; i <= newSearchMax; i++) {
+        getPokemonData(i)
+    }
+    currentCaroIndex = parseInt(newSearchIndex)
+    maxCaroIndex = newSearchMax
+    }
 })
 
 $('.prevCarosel').on('click', () => {

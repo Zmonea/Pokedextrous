@@ -180,7 +180,7 @@ const nextCaro = ( min, max) => {
                     $typeBox.append($type)
 
                 }
-                //Modal Creation
+                
                 
 
                 
@@ -209,15 +209,36 @@ const nextCaro = ( min, max) => {
                                 url: `https://pokeapi.co/api/v2/pokemon/${moreInfoTerm}`,
                                 }).then( (data) => {
 
+                                    //Modal Creation
+
                                     alert(data.name)
                                     let $modalImage = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
                                     $('.modalImage').append($modalImage)
-
+                                    let $modalName = $('<h2>').html(`${data.name}`)
+                                        $('.modalText').append($modalName)
                                 })
+
+                                     $.ajax({
+                                        type: "GET",
+                                         url: `https://pokeapi.co/api/v2/pokemon-species/${moreInfoTerm}`,
+                                
+                                     }).then( (specData) => {
+                                        
+                                        
+                                        let $modalFlavor = $('<div>').html(`${specData.flavor_text_entries[0].flavor_text}`)
+                                        $('.modalText').append($modalFlavor)
+                                       
+                                     })
+
+                                    // let $modalFlavor = $('<h4>').html(`test data`)
+                                    // $('.modalText').append($modalFlavor)
+
+
+                                
                                 
 
                         });
-                      });
+                    });
                     
 
             })

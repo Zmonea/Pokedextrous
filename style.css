@@ -52,6 +52,9 @@ section {
     width: 100%;
     background-color: white;
 }
+.modalText{
+    background-color: white;
+}
 .intro{
     display: flex;
     width: 100%;

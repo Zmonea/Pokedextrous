@@ -13,6 +13,12 @@ body{
     width: 100vw;
     font-family: 'Fira Sans', sans-serif;
 }
+ul {
+    list-style-type: none;
+}
+a{
+    color: white;
+}
 header {
     background-image: url(./PokeBanner2.jpg);
     min-height: 205px;
@@ -85,6 +91,7 @@ section {
 .newsRow{
     display: flex;
     align-items: center;
+    margin-top: 10px;
 }
 .newsImage{
     
@@ -92,6 +99,7 @@ section {
 }
 .articleText{
 font-size: 1.1em;
+
 }
 .intro{
     width: 100%;
@@ -321,7 +329,9 @@ footer {
     background-color: #242424;
     margin-top: 30px;
     margin-bottom: 20px;
-    height: 18vh;
+    height: 10vh;
+    color: white;
+    align-items: flex-start;
 }
 footer section{
     display: flex;
@@ -334,11 +344,28 @@ footer section{
 footer a{
     text-decoration: none;
 }
+.icon{
+    filter:invert(100%);
+}
+.customerFoot{
+    color: white;
+    text-decoration: underline;
+
+}
+.aboutFoot{
+    color: white;
+    text-decoration: underline;
+}
 
 @media(min-width:2000px){
 header{
     background-size: cover;
 }
+
+}
+.icon1{
+    height: 25px;
+    width:  25px;
 
 }
 @media(min-width:751px) and (max-width:1000px ) {

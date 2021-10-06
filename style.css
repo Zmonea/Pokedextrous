@@ -88,7 +88,10 @@ section {
 }
 .newsImage{
     
-    width: 530px;
+    width: 50%;
+}
+.articleText{
+font-size: 1.1em;
 }
 .intro{
     width: 100%;
@@ -338,7 +341,15 @@ header{
 }
 
 }
+@media(min-width:751px) and (max-width:1000px ) {
+    .newsRow{
+        flex-direction: column;
+    }
+}
 @media(max-width:750px){
+    .newsRow{
+        flex-direction: column;
+    }
     .type div{
         width: 90%;
     }

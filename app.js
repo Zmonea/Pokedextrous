@@ -23,30 +23,7 @@ let maxCaroIndex = currentCaroIndex + 10;
         }
     }
   
-//    let officialArt = [] 
 
-//     function apiImageArr(first, last) {
-    
-
-//     for (let index = first; index < last; index++) {
-//         // const imageList = await $.ajax(`https://pokeapi.co/api/v2/${index}`).then
-//         // officialArt.push(`{imageList.sprites.other['official-artwork'].front_default`)
-
-//          $.ajax({
-        
-//             type: 'GET',
-//             url: `https://pokeapi.co/api/v2/pokemon/${index}`,
-//             }).then( (data) => {
-                
-//                 officialArt.push(data.sprites.other['official-artwork'].front_default)
-//             })
-
-//        // {data.sprites.other['official-artwork'].front_default}
-        
-//     }
-//     console.log(officialArt[0]);
-  
-// }
 
 const sortById = (selector, append) => {
         //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
@@ -163,7 +140,6 @@ const nextCaro = ( min, max) => {
             url: `https://pokeapi.co/api/v2/pokemon/${pokemon}`,
             }).then( (data) => {
 
-               // apiImageArr()
 
                 //Id
                 let $id = $('<div>').attr('id',`${data.id}`)
@@ -291,9 +267,6 @@ for (let i = currentCaroIndex; i <= maxCaroIndex; i++) {
      
 }
 
-//TBD
-// apiImageArr(10,100)
-// console.log(officialArt);
 
 
 $('.updateSearch').on('click', () => {
@@ -379,15 +352,10 @@ $('body').on('click', '.caroselPic', (event) => {
 
 $('.sortByClass').on('click', () => {
     
+let grandpa = $('.normal').eq(0).parent().parent()
+    console.log(grandpa)
 
-   //type.filter(`:not(.normal)`)
-//    console.log(type);
- 
-    
-//console.log(testing)
-    
-     sortByClass('.type', "#test")
-     
+
 })
 
 

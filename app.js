@@ -41,27 +41,6 @@ const sortById = (selector, append) => {
       }
 
 
-    const sortByClass = (selector, append) => {
-        //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
-
-        let sortClassList = $(selector).toArray().sort((a, b) => {
-            return parseInt(a.class) - parseInt(b.class)
-        })
-    
-        $.each(sortClassList, (i, div) => {
-            let newDiv = sortClassList;
-             $(selector).remove();
-            $(append).append(newDiv)
-            
-        });
-          console.log(sortClassList)
-      }
-
-const filterByType = () => {
-  
-}
-
-
 const prevCaro = ( min, max) => {
     min -= 10
     max -= 10
@@ -349,18 +328,6 @@ $('body').on('click', '.caroselPic', (event) => {
     maxCaroIndex = parseInt($newMax)
 
 }) 
-
-$('.sortByClass').on('click', () => {
-    
-let grandpa = $('.normal').eq(0).parent().parent()
-    console.log(grandpa)
-
-
-})
-
-
-
-
           
 });
 

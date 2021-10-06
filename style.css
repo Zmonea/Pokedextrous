@@ -2,6 +2,7 @@
     font-family: pokemonSolid;
     src: url(./Pokemon\ Solid.ttf);
 }
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:wght@200&display=swap');
 
 *{
     margin: 0 auto;
@@ -153,11 +154,31 @@ section {
     justify-content: center;
 }
 #test{
-    height: 250px;
+    height: 80%;
     margin: 4px;
     text-align: center;
     font-size: 1.4em;
     width: 90vw;
+}
+.listTitles{
+    display: flex;
+    background-color: #242424;
+    color: white;
+}
+.idList{
+flex-basis: 15%;
+}
+.nameList{
+    flex-basis: 30%;
+}
+.genList{
+    flex-basis: 13%;
+}
+.moreSpacer{
+    flex-basis: 32%;
+}
+.typeList{
+    flex-basis: 50%;
 }
 .sprites {
     max-height: 100px;
@@ -167,6 +188,7 @@ section {
     display: flex;
     align-items: center;
     border: 1px solid black;
+    background-color: rgb(63, 63, 63);
 }
 .idSmall{
     flex-basis: 5%;
@@ -195,8 +217,17 @@ padding: 10px;
     padding: 2%;
     border-radius: 10px;
     box-shadow: inset 0px 0px 8px 1px rgb(200 200 200);
+    font-family: 'Fira Sans', sans-serif;
 }
-
+.moreInfo{
+    background-color: rgb(255, 23, 23);
+    border: 4px solid white;
+    height: 10%;
+    width: 10%;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 1em;
+}
 /* Types */
 .normal{
     background-color: rgb(201, 202, 202);
@@ -251,7 +282,7 @@ padding: 10px;
     color: white;
 }
 .fighting{
-    background-color: rgb(184, 49, 16);
+    background-color: rgb(180, 45, 12);
 }
 .ice{
     background-color: rgb(24, 228, 255);
@@ -260,10 +291,30 @@ padding: 10px;
     background-color: rgb(209, 20, 216)  ;  
 }
 
+footer {
+    display: flex;
+    width: 100vw ;
+    background-color: #242424;
+    margin-top: 30px;
+    margin-bottom: 20px;
+    height: 18vh;
+}
+footer section{
+    display: flex;
+    width: 30vw;
+    max-height: 200px;
+    flex-basis: 30%;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+footer a{
+    text-decoration: none;
+}
+
 @media(min-width:2000px){
-    header{
+header{
     background-size: cover;
-    }
+}
 
 }
 @media(max-width:750px){

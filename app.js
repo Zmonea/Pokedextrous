@@ -63,6 +63,7 @@ const sortById = (selector, append) => {
           
       }
 
+
     //   const sortByClass = (selector, append) => {
     //     //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
 
@@ -78,6 +79,10 @@ const sortById = (selector, append) => {
     //     });
     //       console.log(sortClassList)
     //   }
+
+const filterByType = () => {
+  
+}
 
 
 const prevCaro = ( min, max) => {
@@ -268,7 +273,7 @@ const nextCaro = ( min, max) => {
                                             $('.modalText').append($modalHabitat)
                                            
                                          })
-                                    }, 200)
+                                    }, 400)
                             
                             $('.modalContainer').css('display','block')
                                 
@@ -353,6 +358,7 @@ $('.modalContainer').on('click', () => {
 
 
     //credit to Wirex00 on stack Overflow on a method for being able to target event not yet in the DOM
+    //This Allows them to click on the Carosel Picture and search the index
 $('body').on('click', '.caroselPic', (event) => {
     
    let $caroIndexUpdate = $(event.currentTarget)[0].id
@@ -370,9 +376,22 @@ $('body').on('click', '.caroselPic', (event) => {
     maxCaroIndex = parseInt($newMax)
 
 }) 
-// $('.sortByClass').on('click', () => {
-//     sortByClass('.id', ".type")
-// })
+
+$('.sortByClass').on('click', () => {
+    
+
+    
+ 
+
+   
+   //type.filter(`:not(.normal)`)
+//    console.log(type);
+ 
+    
+//console.log(testing)
+    
+    // sortByClass('.type', "#test")
+})
 
 
 

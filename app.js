@@ -63,6 +63,22 @@ const sortById = (selector, append) => {
           
       }
 
+    //   const sortByClass = (selector, append) => {
+    //     //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
+
+    //     let sortClassList = $(selector).toArray().sort((a, b) => {
+    //         return parseInt(a.class) - parseInt(b.class)
+    //     })
+    
+    //     $.each(sortClassList, (i, div) => {
+    //         let newDiv = sortClassList;
+    //          $(selector).remove();
+    //         $(append).append(newDiv)
+            
+    //     });
+    //       console.log(sortClassList)
+    //   }
+
 
 const prevCaro = ( min, max) => {
     min -= 10
@@ -200,6 +216,8 @@ const nextCaro = ( min, max) => {
                 let $spriteCarosel = $('<img>').attr("src", `${data.sprites.other['official-artwork'].front_default}`)
                 $spriteCarosel.addClass('caroselPic')
                 $spriteCarosel.attr('id',`${data.id}`)
+                $spriteCarosel.css('background')
+
                 $('.caroselImg').append($spriteCarosel)
 
                 sortById('.caroselPic','.caroselImg')
@@ -352,14 +370,11 @@ $('body').on('click', '.caroselPic', (event) => {
     maxCaroIndex = parseInt($newMax)
 
 }) 
-// $('.moreInfo').on('click', (event) => {
-//     $(event.currentTarget).html('clicked ')
-//     console.log('Test ')
-   
-//  })
+// $('.sortByClass').on('click', () => {
+//     sortByClass('.id', ".type")
+// })
 
 
-//sortById('.caroselPic','.caroselImg')
 
 
           

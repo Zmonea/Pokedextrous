@@ -23,30 +23,30 @@ let maxCaroIndex = currentCaroIndex + 10;
         }
     }
   
-   let officialArt = [] 
+//    let officialArt = [] 
 
-    function apiImageArr(first, last) {
+//     function apiImageArr(first, last) {
     
 
-    for (let index = first; index < last; index++) {
-        // const imageList = await $.ajax(`https://pokeapi.co/api/v2/${index}`).then
-        // officialArt.push(`{imageList.sprites.other['official-artwork'].front_default`)
+//     for (let index = first; index < last; index++) {
+//         // const imageList = await $.ajax(`https://pokeapi.co/api/v2/${index}`).then
+//         // officialArt.push(`{imageList.sprites.other['official-artwork'].front_default`)
 
-         $.ajax({
+//          $.ajax({
         
-            type: 'GET',
-            url: `https://pokeapi.co/api/v2/pokemon/${index}`,
-            }).then( (data) => {
+//             type: 'GET',
+//             url: `https://pokeapi.co/api/v2/pokemon/${index}`,
+//             }).then( (data) => {
                 
-                officialArt.push(data.sprites.other['official-artwork'].front_default)
-            })
+//                 officialArt.push(data.sprites.other['official-artwork'].front_default)
+//             })
 
-       // {data.sprites.other['official-artwork'].front_default}
+//        // {data.sprites.other['official-artwork'].front_default}
         
-    }
-    console.log(officialArt[0]);
+//     }
+//     console.log(officialArt[0]);
   
-}
+// }
 
 const sortById = (selector, append) => {
         //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
@@ -269,8 +269,8 @@ for (let i = currentCaroIndex; i <= maxCaroIndex; i++) {
 }
 
 //TBD
-apiImageArr(10,100)
-console.log(officialArt);
+// apiImageArr(10,100)
+// console.log(officialArt);
 
 
 $('.updateSearch').on('click', () => {
@@ -328,9 +328,30 @@ $('.nextCarosel').on('click', () => {
     $('.caroselImg').addClass('animateRight')
 
 })
+
 $('.modalContainer').on('click', () => {
     $('.modalContainer').css('display', 'none')
 })
+
+
+    //credit to Wirex00 on stack Overflow on a method for being able to target event not yet in the DOM
+$('body').on('click', '.caroselPic', (event) => {
+    
+   let $caroIndexUpdate = $(event.currentTarget)[0].id
+
+   let $newMax = parseInt($caroIndexUpdate) + 10
+
+   $('#test').empty()
+   $('.caroselImg').empty()
+   
+   for (let i = $caroIndexUpdate; i <= $newMax; i++) {
+    
+         getPokemonData(i)
+    }
+    currentCaroIndex = parseInt($caroIndexUpdate)
+    maxCaroIndex = parseInt($newMax)
+
+}) 
 // $('.moreInfo').on('click', (event) => {
 //     $(event.currentTarget).html('clicked ')
 //     console.log('Test ')

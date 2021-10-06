@@ -41,7 +41,7 @@ section {
 }
 /* Modal CSS */
 .modalContainer{
-    background-color: rgba(0, 0, 0, 0.301);
+    background-color: rgba(0, 0, 0, 0.351);
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -61,6 +61,7 @@ section {
     z-index: 12;
     display: flex;
     flex-direction: column;
+    box-shadow: 4px 4px rgba(0, 0, 0, 0.51);
 }
 .modalImage img{
     height: 100%;
@@ -262,7 +263,16 @@ padding: 10px;
     }
 
 }
-
+@media(max-width:750px){
+    .type div{
+        width: 90%;
+    }
+    .modalInfo{
+        height:65%;
+        width: 65%;
+    }
+    
+}
 @keyframes SlideRight{
     0% { opacity: 75%; transform: translateX(0px);}
     25% {opacity: 50%; transform: translateX(50px);}

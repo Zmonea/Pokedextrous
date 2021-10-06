@@ -71,6 +71,7 @@ section {
     display: flex;
     flex-direction: column;
     box-shadow: 4px 4px rgba(0, 0, 0, 0.51);
+    min-height: 800px;
 }
 .modalImage img{
     height: 100%;

@@ -64,21 +64,21 @@ const sortById = (selector, append) => {
       }
 
 
-    //   const sortByClass = (selector, append) => {
-    //     //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
+    const sortByClass = (selector, append) => {
+        //credit to Jamie Dunstan of Stack Overflow for the nice suggestion on using Each.
 
-    //     let sortClassList = $(selector).toArray().sort((a, b) => {
-    //         return parseInt(a.class) - parseInt(b.class)
-    //     })
+        let sortClassList = $(selector).toArray().sort((a, b) => {
+            return parseInt(a.class) - parseInt(b.class)
+        })
     
-    //     $.each(sortClassList, (i, div) => {
-    //         let newDiv = sortClassList;
-    //          $(selector).remove();
-    //         $(append).append(newDiv)
+        $.each(sortClassList, (i, div) => {
+            let newDiv = sortClassList;
+             $(selector).remove();
+            $(append).append(newDiv)
             
-    //     });
-    //       console.log(sortClassList)
-    //   }
+        });
+          console.log(sortClassList)
+      }
 
 const filterByType = () => {
   
@@ -380,17 +380,14 @@ $('body').on('click', '.caroselPic', (event) => {
 $('.sortByClass').on('click', () => {
     
 
-    
- 
-
-   
    //type.filter(`:not(.normal)`)
 //    console.log(type);
  
     
 //console.log(testing)
     
-    // sortByClass('.type', "#test")
+     sortByClass('.type', "#test")
+     
 })
 
 

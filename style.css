@@ -82,9 +82,19 @@ section {
     width: 100%;
     height:10%;
 }
+.newsRow{
+    display: flex;
+    align-items: center;
+}
+.newsImage{
+    
+    width: 530px;
+}
 .intro{
     width: 100%;
     align-items: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
 }
 .carosel{
     display: flex;
@@ -170,6 +180,7 @@ width: 90vw;
     font-size: 1.4em;
     height: 30px;
     margin-bottom: -4px;
+    margin-top: 16px;
 }
 .idList{
 flex-basis: 15%;
@@ -195,12 +206,15 @@ flex-basis: 15%;
     align-items: center;
     border: 1px solid black;
     background-color: rgb(63, 63, 63);
+    
 }
 .idSmall{
     flex-basis: 5%;
+    color: white;
 }
 .name{
     flex-basis: 20%;
+    color: white;
 }
 
 .type{
@@ -216,6 +230,7 @@ flex-basis: 15%;
 margin:0 5px 0 5px;
 text-align: center;
 padding: 10px;
+color: white;
 }
 
 .type div{
@@ -230,7 +245,7 @@ padding: 10px;
     border: 4px solid white;
     height: 10%;
     width: 10%;
-    padding: 10px;
+    padding: 7px;
     border-radius: 5px;
     font-size: 1em;
 }
